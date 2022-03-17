@@ -1,0 +1,51 @@
+{
+    "name": "phobrv/brvagency",
+    "description": ":package_description",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+    {
+        "name": "Nguyen Trong Pho",
+        "email": "nguyentrongpho@gmail.com",
+        "homepage": "https://nguyentrongpho.com"
+    }],
+    "homepage": "https://github.com/phobrv/brvagency",
+    "keywords": ["Laravel", "Brvagency"],
+    "require":
+    {
+        "laravel/framework": "^8.0",
+        "illuminate/support": "~7|~8"
+    },
+    "require-dev":
+    {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "Phobrv\\Brvagency\\": "src/"
+        }
+    },
+    "autoload-dev":
+    {
+        "psr-4":
+        {
+            "Phobrv\\Brvagency\\Tests\\": "tests"
+        }
+    },
+    "extra":
+    {
+        "laravel":
+        {
+            "providers": [
+                "Phobrv\\Brvagency\\BrvagencyServiceProvider"
+            ],
+            "aliases":
+            {
+                "Brvagency": "Phobrv\\Brvagency\\Facades\\Brvagency"
+            }
+        }
+    }
+}
