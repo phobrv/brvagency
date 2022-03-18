@@ -45,8 +45,8 @@
 					@include('phobrv::input.inputSelect',['label'=>'Province','key'=>'term_id','array'=>$data['provinces'],'value'=>$data['select'],'required'=>true])
 					@include('phobrv::input.inputText',['label'=>'Name','key'=>'title','required'=>true])
 					@include('phobrv::input.inputText',['label'=>'Địa chỉ','key'=>'excerpt','required'=>true])
-					@include('phobrv::input.inputText',['label'=>'Phone','key'=>'thumb'])
-					@include('phobrv::input.inputTextarea',['label'=>'Map','key'=>'content','style'=>'short'])
+					@include('phobrv::input.inputText',['label'=>'Phone','key'=>'thumb','inputType'=>'number'])
+					@include('phobrv::input.inputTextarea',['label'=>'Map','key'=>'content','style'=>'short','row'=>'5'])
 				</div>
 				<div class="box-footer">
 					<button class="pull-right btn btn-primary" type="submit">{{$data['submit_label'] ?? ''}}</button>
