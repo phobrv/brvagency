@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <ul>
@@ -33,12 +33,12 @@
 @section('content')
 <div class="row">
 	<div class="col-md-5">
-		<div class="box  box-primary">
+		<div class="card">
 			<div class="box-header">
 				Create/Edit Agency
 			</div>
 			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('agency.update',array('agency'=>$data['post']->id)) : route('agency.store')}}">
-				<div class="box-body">
+				<div class="card-body">
 					<input type="hidden" name="type" value="{{ config('option.post_type.agency') }}">
 					@isset($data['post']) @method('put') @endisset
 					@csrf
@@ -48,15 +48,15 @@
 					@include('phobrv::input.inputText',['label'=>'Phone','key'=>'thumb','inputType'=>'number'])
 					@include('phobrv::input.inputTextarea',['label'=>'Map','key'=>'content','style'=>'short','row'=>'5'])
 				</div>
-				<div class="box-footer">
+				<div class="card-footer">
 					<button class="pull-right btn btn-primary" type="submit">{{$data['submit_label'] ?? ''}}</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div class="col-md-7">
-		<div class="box box-primary">
-			<div class="box-body">
+		<div class="card">
+			<div class="card-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>

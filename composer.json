@@ -13,8 +13,8 @@
     "keywords": ["Laravel", "Brvagency"],
     "require":
     {
-        "laravel/framework": "^8.0",
-        "illuminate/support": "~7|~8"
+        "laravel/framework": "^9.0",
+        "illuminate/support": "~9"
     },
     "require-dev":
     {
