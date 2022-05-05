@@ -8,7 +8,7 @@
 <div class="row">
 	<div class="col-md-5">
 		<div class="card">
-			<div class="box-header">
+			<div class="card-header">
 				Create/Edit Region
 			</div>
 			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['term']) ? route('province.update',array('province'=>$data['term']->id)) : route('province.store')}}">
@@ -60,7 +60,7 @@
 							<td>{{$r->name}}</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('province.edit',array('province'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('province.edit',array('province'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroy('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 								<form id="destroy{{$r->id}}" action="{{ route('province.destroy',array('province'=>$r->id)) }}" method="post" style="display: none;">

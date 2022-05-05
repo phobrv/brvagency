@@ -33,11 +33,11 @@
 @section('content')
 <div class="row">
 	<div class="col-md-5">
-		<div class="card">
-			<div class="box-header">
-				Create/Edit Agency
-			</div>
-			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('agency.update',array('agency'=>$data['post']->id)) : route('agency.store')}}">
+		<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('agency.update',array('agency'=>$data['post']->id)) : route('agency.store')}}">
+			<div class="card">
+				<div class="card-header">
+					Create/Edit Agency
+				</div>
 				<div class="card-body">
 					<input type="hidden" name="type" value="{{ config('option.post_type.agency') }}">
 					@isset($data['post']) @method('put') @endisset
@@ -51,8 +51,10 @@
 				<div class="card-footer">
 					<button class="pull-right btn btn-primary" type="submit">{{$data['submit_label'] ?? ''}}</button>
 				</div>
-			</form>
-		</div>
+
+			</div>
+		</form>
+
 	</div>
 	<div class="col-md-7">
 		<div class="card">
@@ -85,7 +87,7 @@
 								</a>
 							</td>
 							<td align="center"  width="50px">
-								<a href="{{route('agency.edit',['agency'=>$r->id])}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('agency.edit',['agency'=>$r->id])}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroy('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 								<form id="destroy{{$r->id}}" action="{{ route('agency.destroy',array('agency'=>$r->id)) }}" method="post" style="display: none;">
