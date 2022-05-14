@@ -10,6 +10,7 @@ use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\HandleMenuServices;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\PostServices;
 
 class AgencyController extends Controller
 {
@@ -20,11 +21,13 @@ class AgencyController extends Controller
     protected $handleMenuService;
     protected $type;
     protected $taxonomy;
+    protected $postService;
 
     public function __construct(
         UserRepository $userRepository,
         TermRepository $termRepository,
         PostRepository $postRepository,
+        PostServices $postService,
         HandleMenuServices $handleMenuService,
         UnitServices $unitService
     ) {
@@ -33,6 +36,8 @@ class AgencyController extends Controller
         $this->postRepository = $postRepository;
         $this->termRepository = $termRepository;
         $this->unitService = $unitService;
+        $this->postService = $postService;
+
         $this->type = config('option.post_type.agency');
         $this->taxonomy = config('term.taxonomy.province');
     }
@@ -159,7 +164,7 @@ class AgencyController extends Controller
             $data['term'] = $data['post']->terms()->where('taxonomy', $this->taxonomy)->first();
             $data['select'] = $data['term']->id ?? '0';
             $data['submit_label'] = "Update";
-            $data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);
+            $data['meta'] = $this->postService->getMeta($data['post']->postMetas);
 
             return view('phobrv::agency.index')->with('data', $data);
         } catch (Exception $e) {
@@ -195,10 +200,10 @@ class AgencyController extends Controller
             $msg = __('Update agency success!');
             if (isset($request->typeSubmit) && $request->typeSubmit == 'update') {
                 return redirect()->route('agency.edit', ['agency' => $id])
-                    ->with('alert_success', $msg);
+                ->with('alert_success', $msg);
             } else {
                 return redirect()->route('agency.index')
-                    ->with('alert_success', $msg);
+                ->with('alert_success', $msg);
             }
 
         } catch (Exception $e) {
