@@ -164,7 +164,7 @@ class AgencyController extends Controller
             $data['term'] = $data['post']->terms()->where('taxonomy', $this->taxonomy)->first();
             $data['select'] = $data['term']->id ?? '0';
             $data['submit_label'] = "Update";
-            $data['meta'] = $this->postService->getMeta($data['post']->postMetas);
+            $data['meta'] = $data['post']->meta;
 
             return view('phobrv::agency.index')->with('data', $data);
         } catch (Exception $e) {
